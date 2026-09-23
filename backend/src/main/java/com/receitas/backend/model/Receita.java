@@ -15,10 +15,11 @@ public class Receita {
     @Column(nullable = false, length = 100)
     private String nome;
 
-    @Column(nullable = false,)
+    @Column(nullable = false)
     private String ingredientes;
 
     @Column()
+    @Positive
     private Integer tempoPreparoMin;
 
     @Column()
@@ -27,12 +28,12 @@ public class Receita {
     @Column()
     private Boolean favorita;
 
-    public Receita(String nome, String ingredientes, Integer tempoPreparoMin, String dificuldade, Boolean favorita){
-        this.nome = "nome";
-        this.ingredientes = "ingredientes";
-        this.tempoPreparoMin = "tempoPreparoMin";
-        this.dificuldade = "dificuldade";
-        this.favorita = "favorita";
+    public Receita(String nome, String ingredientes, Integer tempoPreparoMin, String dificuldade){
+        this.nome = nome; //"Nome" da esquerda é do objeto / "Nome" da direita é o parametro
+        this.ingredientes = ingredientes;
+        this.tempoPreparoMin = tempoPreparoMin;
+        this.dificuldade = dificuldade;
+        this.favorita = false;
     }
 
     public Long getId() {
