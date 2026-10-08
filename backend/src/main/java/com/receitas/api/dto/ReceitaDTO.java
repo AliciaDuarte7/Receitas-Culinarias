@@ -4,21 +4,20 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class ReceitaDTO {
-
-@Schema(description = "Identificador da receita, atribuído pelo servidor", example = "1",
-      accessMode = Schema.AccessMode.READ_ONLY)
-      private long Id;
+@Schema(description = "Receita")
+public class ReceitaDTO{
 
 
 @Schema(description = "Identificador da tarefa, atribuído pelo servidor", example = "1",
       accessMode = Schema.AccessMode.READ_ONLY)
-       public class receitaDTO {
+      private long Id;
+
+       public class receitaDTO; {
 
       @Schema(description = "Nome da receita.", example = "Bolinho de chuva.", maxlength = 100)
       @NotBlank(message = "é necessario o nome da receita.")
       @Size(max = 100, message = "o nome deve conter menos de 100 caracteres.") 
-    private long TituloDaReceita;
+    private long NomeDaReceita;
 
     @Schema(description = "Descreva quais e quantos ingredientes serão necessarios", example = "dois ovos.", maxlength = 500)
     @Size(max = 500, message = "a lista de ingredientes deve conter menos de 500 caracteres")
@@ -30,26 +29,7 @@ public class ReceitaDTO {
      @NotBlank(message = "O tempo de preparo é obrigatório")
      private String tempoDePreparo;
 
-     
-    
 
-
-    @NotBlank(message = "é necessario o nome da receita.")
-    @Size(max = 100, message = "o nome deve conter menos de 100 caracteres.") 
-    @Schema(description = "Nome da receita.", example = "Bolinho de chuva.", maxLength = 100)
-    private String nomeDaReceita;
-   
-
-    @Size(max = 500, message = "a lista de ingredientes deve conter menos de 500 caracteres")
-    @Schema(description = "Descreva quais e quantos ingredientes serão necessarios", example = "dois ovos.", maxLength = 500)
-     private String Ingredientes;
-      
-    
-     @NotBlank(message = "O tempo de preparo é obrigatório")
-     @Schema(description = "O tempo de preparo estimado", example = "45 Minutos")
-      private String TempoDePreparo;
-
-      
       @Size(max = 20, message = "A dificuldade deve conter menos de 20 caracteres")
       @schema(description = "Dificuldade da receita (opcional)", example = "Fácil")
       private String dificuldadeReceita;
@@ -106,5 +86,4 @@ public class ReceitaDTO {
       }
 
       //a partir da linha 58 foi tudo inventado, n tenho ideia do que eu fiz e pra que serve,
-      //mas tava no outro código então achei uma boa colocar por aqui também, felicidades ao próximo.}
-}
+}      //mas tava no outro código então achei uma boa colocar por aqui também, felicidades ao próximo.}}
