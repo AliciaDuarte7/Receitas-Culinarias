@@ -1,4 +1,4 @@
-package com.todolist.api.dto;
+package com.todolist.api.dto; //essa parte aqui tem hora q dá certo tem hora q dá errado, ent n vou mexer por enquanto.
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
@@ -9,8 +9,8 @@ public class ReceitaDTO {
       
      @Schema(description = "Identificador da receita, atribuído pelo servidor", example = "1",
             accessMode = Schema.AccessMode.READ_ONLY)
-      //n entendi pra q serve isso mas deixei ai só pra ter (meti o copia e cola)
-      private long id;
+            private long Id;
+
      
     
 
@@ -29,6 +29,71 @@ public class ReceitaDTO {
      @NotBlank(message = "O tempo de preparo é obrigatório")
      @Schema(description = "O tempo de preparo estimado", example = "45 Minutos")
       private String TempoDePreparo;
+
+      
+      @Size(max = 20, message = "A dificuldade deve conter menos de 20 caracteres")
+      @schema(description = "Dificuldade da receita (opcional)", example = "Fácil")
+      private String dificuldadeReceita;
+
+
+      public ReceitaDTO(Id, nomeDaReceita, Ingredientes, TempoDePreparo, dificuldadeReceita){
+            this.Id = Id;
+            this.nomeDaReceita = nomeDaReceita;
+            this.TempoDePreparo = TempoDePreparo;
+            this.dificuldadeReceita = dificuldadeReceita;
+
+
+      }
+
+      public long getid() {
+            return Id;
+      }
+
+      public String getnomeDaReceita(){
+            return nomeDaReceita;
+      }
+
+      public String getIngredientes(){
+            return Ingredientes;
+      
+      }
+
+      public String getTempoDePreparo(){
+            return TempoDePreparo;
+      }
+
+      public String getdificuldadeReceita(){
+            return dificuldadeReceita;
+      }
+
+      public void setId(long Id){
+            this.Id = Id;
+      }
+
+      public void setnomeDaReceita(String nomeDaReceita){
+            this.nomeDaReceita = nomeDaReceita;
+      }
+
+      public void setIngredientes(String Ingredientes){
+            this.Ingredientes = Ingredientes;
+      }
+
+      public void setTempoDePreparo(String TempoDePreparo){
+            this.TempoDePreparo = TempoDePreparo;
+      }
+
+      public void setdificuldadeReceita(String dificuldadeReceita){
+            this.dificuldadeReceita = dificuldadeReceita;
+      }
+
+      //a partir da linha 39 foi tudo inventado, n tenho ideia do que eu fiz e pra que serve,
+      //mas tava no outro código então achei uma boa colocar por aqui também, felicidades ao próximo.
+
+
+
+
+
+
       
       
      
