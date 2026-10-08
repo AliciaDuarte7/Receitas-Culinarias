@@ -64,7 +64,7 @@ public class ReceitaDTO {
 
       }
 
-      public long getid() {
+      public long getId() {
             return Id;
       }
 
@@ -105,7 +105,6 @@ public class ReceitaDTO {
             this.dificuldadeReceita = dificuldadeReceita;
       }
 
-      //a partir da linha 39 foi tudo inventado, n tenho ideia do que eu fiz e pra que serve,
-      //mas tava no outro código então achei uma boa colocar por aqui também, felicidades ao próximo.
-
+      //a partir da linha 58 foi tudo inventado, n tenho ideia do que eu fiz e pra que serve,
+      //mas tava no outro código então achei uma boa colocar por aqui também, felicidades ao próximo.}
 }
