@@ -13,36 +13,89 @@ import com.todoreceitasculinarias.list.api.repository.ReceitaRepository;
 import java.util.Receita;
 import java.util.Optional;
 
-@service
+@Service
 public class ReceitaService {
-    private static final Logger logger = LoggerFactory.getLogger(ReceitaService.class);
-    private final ReceitaRepository ReceitaRepository;
-    private final ReceitaMapper ReceitaMapper;
+   private static final Logger logger = LoggerFactory.getLogger(ReceitaService.class);
+   
+   
+   private final ReceitaRepository receitaRepository;
+   private final ReceitaMapper receitaMapper;
 
-}
+   public ReceitaService(ReceitaRepository receitaRepository, ReceitaMapper receitaMapper){
+    this.receitaRepository = ReceitaRepository;
+    this.receitaMapper = ReceitaMapper;
 
-Transactional(readOnly = true) // isso tá suspeito
-public Opcional<ReceitaDTO> getReceitaById(long Id){
-    logger.debug("Buscar receita por Id='{}'", Id);
-    return receitaRepository.findById(Id).map(ReceitaMapper::convertToDTO);
-    //toda essa parte me parece errada e sem nexo, mas entendi oq ele faz.
 
-}
+   }
 
-@Transactional
-public ReceitaDTO createReceita(ReceitaDTO receitaDTO){
-    logger.info("criando a receita com um Titulo ='{}'", ReceitaDTO.getTituloDaReceita());
+   //lista todas as receitas
+   @Transactional(readOnly = true)
+   public list<ReceitaDTO> getAllReceitas(){
+    logger.debug("Buscando todas as receitas");
+    return ReceitaRepository.findAll().stream().map(ReceitaMapper::convertToDTO).toList();
+
+              
+   }
+
+   //busca receita pelo Id
+   @Transactional(readOnly = true)
+   public Optional<ReceitaDTO> getReceitaById(Long Id){
+    logger.debug("Buscando Receitas pelo Id={}", Id);
+    return ReceitaRepository.findById(Id).map(ReceitaMapper::convertToDTO);
+
+   }
+
+   //cria receita nova e retorna com id do banco
+   @Transactional
+   public ReceitaDTO createReceita(ReceitaDTO receitaDTO){
+    logger.info("criando uma receita com o Título='{}'", receitaDTO.getNomeDaReceita());
     Receita receita = ReceitaMapper.convertToEntity(ReceitaDTO);
     Receita savedReceita = ReceitaRepository.save(receita);
     return ReceitaMapper.convertToDTO(savedReceita);
-    //n cheguei em conclusão nennhuma mas ta ai
-}
+   }
 
-@Transactional
-public Optional<ReceitaDTO> updateReceita(Long Id, ReceitaDTO receitaDTO){
-    logger.info("Atualizar receita por Id={}", Id);
-    return ReceitaRepository.findById(Id).map(existingTask -> {
-        existingReceita.setnomeDaReceita(ReceitaDTO.getnomeDaReceita());
-        existingReceita.set
-    })
+   @Transactional 
+   public Optional<ReceitaDTO> updateReceita(Long Id, ReceitaDTO receitaDTO){
+    logger.info("atualizando receita com o Id={}", Id);
+    return ReceitaRepository.findById(Id).map(existingReceita -> { 
+        existingReceita.setNomeDaReceita(receitaDTO.getNomeDaReceita());
+        existingReceita.setIngredientes(receitaDTO.getIngredientes());
+        if (ReceitaDTO.getCompleted() != null){
+            existingReceita.setCompleted(receitaDTO.getCompleted());
+
+        }
+        Receita updateReceita = ReceitaRepository.save(existingReceita);
+        return ReceitaMapper.convertToDTO(updateReceita);
+    });
+   }
+
+   @Transactional
+    public Optional<ReceitaDTO> toggleReceitaCompletion(Long Id) {
+        logger.info("alterar conclusão da receita com o id={}", Id);
+        return ReceitaRepository.findById(Id).map(receita -> {
+                    task.setCompleted(!task.getCompleted());
+                    Task updatedTask = taskRepository.save(receita);
+                    return taskMapper.convertToDTO(updatedReceita);
+                });
+    }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -1,7 +1,7 @@
-package com.receitasculinarias.api.mapper;
+package com.receitas.api.mapper;
 
-import com.receitasculinarias.api.dto.ReceitaDTO;
-import com.ReceitaDTO.api.model.Receita;
+import com.receitas.api.dto.ReceitaDTO;
+import com.ReceitasDTO.api.model.Receita;
 
 import org.springframework.stereotype.Component;
 

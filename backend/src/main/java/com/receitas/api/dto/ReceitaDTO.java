@@ -1,4 +1,4 @@
-package com.todolist.api.dto; //essa parte aqui tem hora q dá certo tem hora q dá errado, ent n vou mexer por enquanto.
+package com.receitas.api.dto; //essa parte aqui tem hora q dá certo tem hora q dá errado, ent n vou mexer por enquanto.
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
@@ -31,7 +31,7 @@ public class ReceitaDTO{
 
 
       @Size(max = 20, message = "A dificuldade deve conter menos de 20 caracteres")
-      @schema(description = "Dificuldade da receita (opcional)", example = "Fácil")
+      @Schema(description = "Dificuldade da receita (opcional)", example = "Fácil")
       private String dificuldadeReceita;
 
 
@@ -86,4 +86,4 @@ public class ReceitaDTO{
       }
 
       //a partir da linha 58 foi tudo inventado, n tenho ideia do que eu fiz e pra que serve,
-}      //mas tava no outro código então achei uma boa colocar por aqui também, felicidades ao próximo.}}
+}      //mas tava no outro código então achei uma boa colocar por aqui também, felicidades ao próximo.
